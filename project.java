@@ -1,14 +1,16 @@
-import java.utils.Scanner;
-import java.utils.ArrayList;
+import java.util.Scanner;
 
 public class project
 {
     public static void main(String[] args)
     {
-        Task reserve = new Task("reserve party venue", 1, "hour");
-        Task practice = new Task("practice the dance", 10, "hours");
+        Task research = new Task("research a party venue", 2, "hours");
+        Task reserve = new Task("reserve party venue", 1, "hour", research);
 
-        System.out.println(reserve);
-        System.out.println(practice);
+        System.out.println(research);
+
+        System.out.println();
+        
+        System.out.println("It takes " + reserve.getTime() + " " + reserve.getUnit() + " to " + reserve.getName() + ". You also first need to " + reserve.getDependencies() + ". The statement, This task is done is " + reserve.getStatus());
     }
 }
