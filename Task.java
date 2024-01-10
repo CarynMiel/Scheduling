@@ -13,6 +13,10 @@ public class Task
     private String unit;
 
     // constructors
+    // @param n: the name of the new object, 
+    //        t: the new time of the object, 
+    //        u: the unit of time of the object,
+    //        d: the dependencies of the object
     public Task(String n, int t, String u, Task d)
     {
         name = n;
@@ -20,6 +24,9 @@ public class Task
         dependencies = d;
         unit = u;
     }
+    // @param n: the name of the new object, 
+    //        t: the new time of the object, 
+    //        u: the unit of time of the object,
     public Task(String n, int t, String u)
     {
         name = n;
@@ -30,20 +37,31 @@ public class Task
     // methods
 
     // accessor methods
+    // @return the name attribute of the Task
     public String getName(){return name;}
+    // @return the time attribute of the Task
     public int getTime(){return time;}
+    // @return the status attirbute of the Task
     public boolean getStatus(){return status;}
+    // @return the dependencies attribute of the Task
     public Task getDependencies(){return dependencies;}
+    // @return the unit attribute of the Task
     public String getUnit(){return unit;}
 
     // mutator methods
+    // @param n: new name of the task
     public void setName(String n){name = n;}
+    // @param t: new time of the task
     public void setTime(int t){time = t;}
+    // @param s: new status of the task
     public void setStatus(boolean s){status = s;}
+    // @param d: new dependency of the task
     public void setDependencies(Task d){dependencies = d;}
+    // @param u: new unit of the task
     public void setUnit(String u){unit = u;}
 
     // to string method
+    // @return the object's attribute in string format
     public String toString()
     {
         String message = name + " takes " + time + " " + unit + " and depends on the tasks, " + dependencies; 
@@ -60,12 +78,21 @@ public class Task
     }
 
     // other methods
-    public boolean isDependentOn(Task task)
+    // @param otherTask: the name of the other task that the user is checking if it is in the objects dependency
+    public boolean isDependentOn(Task otherTask)
     {
-        if(task.getName() == dependencies)
+        try 
         {
-            return true;
+            if(dependencies.getName() == otherTask.getName())
+            {
+                return true;
+            }
+            return false;
+        } 
+        catch (Exception e) 
+        {
+            return false;
         }
-        return false;
+        
     }
 }
